@@ -18,7 +18,7 @@
         position: -webkit-sticky; 
         position: sticky;
         top: 0;
-    }
+    }   
 
     li {
         float: left;
@@ -41,7 +41,7 @@
     }
 
     .image-container {
-        height: 500px;
+        height: 50%;
         display: flex;
     }
 
@@ -56,23 +56,52 @@
     .İftira {
         background-color: lightskyblue;
     }
+    @media only screen and (min-width: 150px) and (max-width: 600px){
+    .İftira img{
+        width: 80%;
+    }
+}
+  
 
     .Masum {
         background-color: lightgreen;
     }
+    @media only screen and (min-width: 150px) and (max-width: 600px){
+    .Masum img{
+        width: 80%;
+    }
+}
 
     .Zincirlenmis {
         background-color: lightcoral;
     }
 
+    @media only screen and (min-width: 150px) and (max-width: 600px){
+    .Zincirlenmis img{
+        width: 80%;
+    }
+}
+
     .Karanlik {
         background-color: lightpink;
     }
+
+    @media only screen and (min-width: 150px) and (max-width: 600px){
+    .Karanlik img{
+        width: 85%;
+    }
+}
 
     .Bahce {
         background-color: rgba(33, 128, 9, 0.713);
         
     }
+
+@media only screen and (min-width: 150px) and (max-width: 600px){
+    .Bahce img{
+        width: 75%;
+    }
+}
 
     img {
         max-height: 100%;
@@ -92,6 +121,21 @@
         border-radius: 5px;
         cursor: not-allowed; 
     }
+    @media only screen and (min-width: 150px) and (max-width: 600px){
+    .button{
+        position: absolute;
+        bottom: 2%;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 5px 10px;
+        font-size: 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: not-allowed; 
+    }
+}
 </style>
 <body>
     <ul>
