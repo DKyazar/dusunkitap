@@ -76,6 +76,31 @@ nav a:nth-child(2):hover~span{
   left:95px;
 }
 
+@media only screen and (min-width: 100px) and (max-width: 800px) {
+  nav {
+    height: auto;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  nav .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  nav .logo {
+    position: relative;
+    left: 0;
+    margin-bottom: 10px;
+  }
+  nav a {
+    padding: 10px;
+    font-size: 1em;
+    text-align: left;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+  }
+}
+
     .slider {
       width: 80%; /* Slider boyutunu küçültmek için genişlik azaltıldı */
       height: 60%; /* Yükseklik azaltıldı */
@@ -167,7 +192,7 @@ nav a:nth-child(2):hover~span{
       color: brown;
     }
 
-    @media only screen and (min-width: 150px) and (max-width: 800px){
+    @media only screen and (min-width: 100px) and (max-width: 800px){
       .footer{
         width: 100%;
       }
@@ -175,7 +200,21 @@ nav a:nth-child(2):hover~span{
         font-size: 10px;
         padding-left: 7px;
       }
-    }
+      .contact-info {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .contact-info i {
+    font-size: 20px;
+  }
+
+  .contact-info span {
+    font-size: 14px;
+  }
+}
+   
 
   </style>
 </head>
