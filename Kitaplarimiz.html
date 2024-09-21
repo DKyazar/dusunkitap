@@ -8,36 +8,90 @@
     <link rel = "icon" href="icon/Kitap.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color:brown;
-        position: -webkit-sticky; 
-        position: sticky;
-        top: 0;
-    }   
 
-    li {
-        float: left;
-    }
+nav{
+	position: relative;
+	width:100%;
+	height: 50px;
+	border-radius: 8px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: brown;
+}
 
-    li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-    }
+nav .nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
 
-    li a:hover {
-        background-color: rgb(14, 139, 189);;
-    }
+nav .logo {
+    position: absolute;
+    left: 20px; 
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    font-family:initial;
+}
 
-    .active {
-        background-color: tan;
-    }
+nav .fiyat {
+    position: absolute;
+    right: 20px; 
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    font-family:initial;
+}
+
+nav a{
+  position: relative;
+  display:inline-block;
+  font-size: 1em;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+  padding:0 23px;
+  z-index: 1;
+}
+
+nav a.active {
+  background-color: #be7171;
+  color: black;
+  border-radius: 8px;
+}
+
+nav span{
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 95px;
+  height: 100%;
+  background: linear-gradient(45deg, #be7171);
+  border-radius: 8px;
+}
+
+nav a:nth-child(1):hover~span{
+  left: 0;
+}
+
+nav a:nth-child(2):hover~span{
+  left:95px;
+}
+
+body{
+	font-family: 'Roboto', sans-serif;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+i {
+	margin-right: 10px;
+}
+
 div.gallery {
   border: 1px solid #ccc;
 }
@@ -85,18 +139,22 @@ div.desc {
   }
 }
 
-
 </style>
 </head>
 <body>
-  <ul>
-    <li><a href="index.html">ANASAYFA</a></li>
-    <li><a class="active" href="#home">KİTAPLARIMIZ</a></li>
-    <li><a href="Yazar.html">YAZARLARIMIZ</a></li>
-    <li><a href="Hikaye.html">BENDE YAZABİLİRİM</a></li>
-    <li><a href="Diger.html">DİĞER ÜRÜNLERİMİZ</a></li>
-    <li style="float:right; color: white; font-size:14px;"><br>DÜŞÜN|KİTAP</li>
-</ul> 
+
+	<nav>
+        <div class="nav-container">
+            <div class="logo">DÜŞÜN|KİTAP</div> 
+            <div class="fiyat"><a href = "fiyat.html">₺</a></div>
+            <a href="index.html">Anasayfa</a>
+            <a href="#" class="active">Kitaplarımız</a>
+            <a href="Yazar.html">Yazarlarımız</a>
+            <a href="Hikaye.html">Ben De Yazabilirim</a>
+            <a href="Diger.html">Diğer Ürünler</a>
+            <span></span>
+        </div>
+	</nav>
 
 
 <div class="responsive">
@@ -110,7 +168,6 @@ div.desc {
 <div class="responsive">
   <div class="gallery">
       <img src="img/Masum.jpg" alt="" width="400" height="600">
-    </a>
     <div class="desc">65 ₺</div>
   </div>
 </div>
@@ -125,14 +182,13 @@ div.desc {
 <div class="responsive">
   <div class="gallery">
       <img src="img/Karanlik.jpg" alt="" width="400" height="600">
-    <div class="desc">80 ₺</div>
+    <div class="desc">90 ₺</div>
   </div>
 </div>
 
 <div class="responsive">
   <div class="gallery">
       <img src="img/CBİG.jpg" alt="" width="300" height="500">
-    </a>
     <div class="desc">55 ₺</div>
   </div>
 </div>
@@ -143,9 +199,5 @@ div.desc {
 
 <div class="clearfix"></div>
 
-
-
 </body>
 </html>
-
-
