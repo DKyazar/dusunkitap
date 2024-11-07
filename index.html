@@ -9,101 +9,97 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     body {
-      background-color: brown;
+      background-color: #1e272e;
+      color: #ecf0f1;
       font-family: Arial, sans-serif;
     }
 
-    nav{
-	position: relative;
-	width:100%;
-	height: 50px;
-	border-radius: 8px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: brown;
-}
+    nav {
+      width: 100%;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #2f3640;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+      margin-bottom: 20px;
+    }
+    
+    nav .nav-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      position: relative;
+    }
 
-nav .nav-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    position: relative;
-}
+    nav .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #ffffff;
+      font-family: 'Courier New', Courier, monospace;
+    }
 
-nav .logo {
-    position: absolute;
-    left: 20px; 
-    font-size: 1.2em;
-    font-weight: bold;
-    color: white;
-    font-family:initial;
-}
+    nav a {
+      font-size: 1em;
+      font-weight: bold;
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 20px;
+    }
 
-nav a{
-  position: relative;
-  display:inline-block;
-  font-size: 1em;
-  font-weight: 500;
-  color: white;
-  text-decoration: none;
-  padding:0 23px;
-  z-index: 1;
-}
+    nav a.active {
+      background-color: #00a8ff;
+      padding: 10px;
+      border-radius: 20px;
+    }
 
-nav a.active {
-  background-color: #be7171;
-  color: black;
-  border-radius: 8px;
-}
+    nav span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 95px;
+      height: 100%;
+      background: linear-gradient(45deg, #be7171);
+      border-radius: 8px;
+    }
 
-nav span{
-  position:absolute;
-  top: 0;
-  left: 0;
-  width: 95px;
-  height: 100%;
-  background: linear-gradient(45deg, #be7171);
-  border-radius: 8px;
-}
+    nav a:nth-child(1):hover~span {
+      left: 0;
+    }
 
-nav a:nth-child(1):hover~span{
-  left: 0;
-}
+    nav a:nth-child(2):hover~span {
+      left: 95px;
+    }
 
-nav a:nth-child(2):hover~span{
-  left:95px;
-}
-
-@media only screen and (min-width: 100px) and (max-width: 800px) {
-  nav {
-    height: auto;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-  nav .nav-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  nav .logo {
-    position: relative;
-    left: 0;
-    margin-bottom: 10px;
-  }
-  nav a {
-    padding: 10px;
-    font-size: 1em;
-    text-align: left;
-    width: 100%;
-    display: block;
-    box-sizing: border-box;
-  }
-}
+    @media only screen and (min-width: 100px) and (max-width: 800px) {
+      nav {
+        height: auto;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      nav .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav .logo {
+        position: relative;
+        left: 0;
+        margin-bottom: 10px;
+      }
+      nav a {
+        padding: 10px;
+        font-size: 1em;
+        text-align: left;
+        width: 100%;
+        display: block;
+        box-sizing: border-box;
+      }
+    }
 
     .slider {
-      width: 80%; /* Slider boyutunu küçültmek için genişlik azaltıldı */
-      height: 60%; /* Yükseklik azaltıldı */
+      width: 80%; 
+      height: 60%; 
       overflow: hidden;
       margin: auto;
       position: relative;
@@ -134,7 +130,7 @@ nav a:nth-child(2):hover~span{
       transform: translateX(-50%);
       padding: 10px 20px;
       background-color: white;
-      color: brown;
+      color: #1e272e;;
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -166,56 +162,99 @@ nav a:nth-child(2):hover~span{
     }
 
     .footer {
-      background-color: #6f18a8;
-      padding: 10px;
-      text-align: center;
+      background-color: #172a38;
+      padding: 30px 20px;
+      color: #ecf0f1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .footer h2 {
+      font-size: 32px; 
+      color: #00a8ff;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .footer-sections {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .footer .section h3 {
+      font-size: 22px; 
+      margin-bottom: 10px;
+      color: #f39c12;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .footer .section a{
+      text-decoration: none;
+    }
+
+    .footer .section p {
+      font-size: 18px; 
+      color: #dcdde1;
+      margin: 5px 0;
+    }
+
+    .footer .section a img {
+      width: 50px; 
+      height: auto;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
     }
 
     .contact-info {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      justify-content: flex-start;
       gap: 20px;
+      margin-top: 20px;
+      font-size: 18px; 
+    }
+
+    .contact-info a{
+      text-decoration: none;
+      color:white   
+    }
+
+    .section a {
       color: white;
     }
 
-    .contact-info i {
-      font-size: 24px;
-      vertical-align: middle;
-    }
-
-    .contact-info span {
-      vertical-align: middle;
-    }
-
-    a {
-      color: brown;
-    }
-
-    @media only screen and (min-width: 100px) and (max-width: 800px){
-      .footer{
+    @media only screen and (min-width: 100px) and (max-width: 800px) {
+      .footer {
         width: 100%;
+        padding-left: 5px;
+      } 
+      
+      .contact-info {   
+        gap: 5px;
+        height: auto; 
+        flex-direction: column;        
+      }   
+      
+      .section h3 {      
+        margin-left: 50px;
+        width: 20%;   
+        flex-direction: column;      
       }
-      span{
-        font-size: 10px;
-        padding-left: 7px;
+
+      .section p{
+        padding-right: 10px;
+        padding-left: 30px;
       }
-      .contact-info {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
-
-  .contact-info i {
-    font-size: 20px;
-  }
-
-  .contact-info span {
-    font-size: 14px;
-  }
-}
-   
-
+    
+    }
   </style>
 </head>
 <body>
@@ -228,9 +267,10 @@ nav a:nth-child(2):hover~span{
         <a href="Yazar.html">Yazarlarımız</a>
         <a href="Hikaye.html">Ben De Yazabilirim</a>
         <a href="Diger.html">Diğer Ürünler</a>
+        <a href="uye.html">Üye ol</a>
         <span></span>
     </div>
-</nav>
+  </nav>
 
   <div class="header-image">
     <img src="img/Logo.JPG" alt="Header Image">
@@ -244,7 +284,6 @@ nav a:nth-child(2):hover~span{
     <div class="slider-content">
       <div class="slider-item">
         <img src="img/Haber1.png" alt="">
-        <button onclick="window.location.href='Haber1.html'">Detaylar</button>
       </div>
 
       <div class="slider-item">
@@ -254,28 +293,66 @@ nav a:nth-child(2):hover~span{
       
       <div class="slider-item">
         <img src="img/Haber3.png" alt="">
+        <button onclick="window.location.href='Haber3.html'">Detaylar</button>
       </div>
 
       <div class="slider-item">
-        <img src="img/Sansli50.jpg" alt="">
-        <button onclick="window.location.href='Haber4.html'">Detaylar</button>
+        <img src="img/Haber4.png" alt="">
       </div>
     </div>
   </div>
 
- <div class="Baslik">
-    <h2>Etkinlikler <hr></h2> 
-  </div>
-  
   <div class="footer">
-    <h3>İletişim</h3>
-    <div class="contact-info">
-      <i class="fas fa-envelope-square"></i><span>berkay.dusunkitap@gmail.com</span>
-      <i class="fab fa-instagram"></i><span>https://www.instagram.com/dusun_kitap_2022/</span>
+    <h2>Düşün Kitap Web Sayfası</h2> <hr style="color: white;">
+    
+    <div class="footer-sections">
+      <div class="section">
+        <h3>Düşün Kitap</h3>
+        <p><a href = "https://dkyazar.github.io/dusunbooks/">Düşün İftira</a> </p>
+        <p><a href = "https://dkyazar.github.io/dusunbooks/masum.html">Masum Kanı</a></p>
+        <p>Zincirlenmiş</p>
+        <p>Karanlıkta Kalan</p>
+        <p><a href = "kitap5.html">Cennet Bahçelerinde 2 Gün</a></p>
+      </div>
+      
+      <div class="section">
+        <h3>Düşün Hikaye</h3>
+        <p><a href = "Hikaye.html#contact">Yazar Olmak İstiyorum</a></p>
+      </div>
+  
+      <div class="section">
+        <h3>Başka Ne Alabilirim?</h3>
+        <p><a href = "https://www.gardrops.com/BerkayP"  target="_blank">Gardrops</a></p>
+        <p><a href = "https://www.shopier.com/ShowProductNew/storefront.php?shop=DusunKitap&sid=cUl0TkNJMnVvbEpLT05ERjBfLTFfIF8g" target="_blank">Shoppier</a></p>
+        <p>Printify [Yakında]</p>
+      </div>
+  
+      <div class="section">
+        <h3>Düşün Oyun</h3>
+        <p>Oyun oynayalım</p>   
+        <a href="game/oyun34195849.html">
+          <img src="img/Librob.png" alt="Librob">
+        </a>
+      </div> 
+<br><br>
+    
+      <div class="contact-info">
+        <span><i class="fas fa-envelope-square"></i>berkay.dusunkitap@gmail.com</span>
+        <a href="https://www.instagram.com/dusun_kitap_2022/"><i class="fab fa-instagram"></i>Instagram </a>
+        <a href="https://www.youtube.com/@DusunHikaye"><i class="fab fa-youtube"></i>Youtube </a>
     </div>
-  </div>
 
-  <a href="1.html">Deney</a>
+    <div style="margin-top: 20px;">
+      <a href="1.html" style="position: fixed; bottom: -10px; left: 10px; color: #1e272e; padding: 10px; border-radius: 5px; text-decoration: none; ">
+        Deney
+      </a>
+       
+    </div>
+    
+    
+  
+
+ 
  
 </body>
 </html>

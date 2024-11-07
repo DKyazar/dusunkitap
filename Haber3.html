@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  padding: 10px;
+  background: #f1f1f1;
+}
+
+
+
+.leftcolumn {   
+  float: left;
+  width: 75%;
+}
+
+
+.rightcolumn {
+  float: left;
+  width: 25%;
+  background-color: #f1f1f1;
+  padding-left: 20px;
+}
+
+
+
+/* Add a card effect for articles */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>Librob Nedir?</h2>     
+      <p>Librob kitaplardan nefret eder. Annesi ise kitapları çok sever. Düzenli olarak yılda 15-20 kitap okuyup bitirmektedir ve oğlunun da düzenli bir kitap okuma alışkanlığı olsun ister. </p>
+      <p>Bir gün Librob'a bir kitap verir. Kendisinden bu kitabı okumasını ister.</p>
+      <p>Librob istemeye istemeye kitabı okumaya başlar. Bir süre sonra sayfası biraz yırtılmış bir sayfaya geldiğinde görüntüsünden rahatsız oldu ve sayfayı tamamen yırttı.</p>
+      <p>Kitabın sayfasını yırtarken çıkan ses çok hoşuna gitmişti. Bu yüzden bir sayfa daha yırttı ve ardından bir tane daha</p>
+      <p>Annesi bu durumu fark etti. Çok sinirlenmişti. Kitabı onun elinden almaya çalıştı.</p>
+      <p>Librob annesinden kaçtı, balkona çıktı. Kapıyı kilitleyip sayfaları yırtıp aşağıya atmaya başladı. </p>
+      <p>Librob'un balkondan aşağıya attığı bu sayfaları toplayıp kitabı tekrar bir araya getirmeye ne dersiniz?</p>
+    </div>
+  </div>
+    <div class="card">
+      <a href="game/oyun34195849.html">Oyunu oynayın</a>
+    </div>
+    
+
+</body>
+</html>
+
+

@@ -14,53 +14,49 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #1e272e;
+  color: #ecf0f1;
 }
 
-nav{
-	position: relative;
-	width:100%;
-	height: 50px;
-	border-radius: 8px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: brown;
-}
+nav {
+            width: 100%;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #2f3640;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
 
-nav .nav-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    position: relative;
-}
+        nav .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            position: relative;
+        }
 
-nav .logo {
-    position: absolute;
-    left: 20px; 
-    font-size: 1.2em;
-    font-weight: bold;
-    color: white;
-    font-family:initial;
-}
+        nav .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ffffff;
+            font-family: 'Courier New', Courier, monospace;
+        }
 
-nav a{
-  position: relative;
-  display:inline-block;
-  font-size: 1em;
-  font-weight: 500;
-  color: white;
-  text-decoration: none;
-  padding:0 23px;
-  z-index: 1;
-}
+        nav a {
+            font-size: 1em;
+            font-weight: bold;
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 20px;
+        }
 
-nav a.active {
-  background-color: #be7171;
-  color: black;
-  border-radius: 8px;
-}
+        nav a.active {
+            background-color: #00a8ff;
+            padding: 10px;
+            border-radius: 20px;
+        }
 
 nav span{
   position:absolute;
@@ -132,6 +128,14 @@ nav a:nth-child(2):hover~span{
   box-sizing: border-box;
 }
 
+@media only screen and (min-width: 100px) and (max-width: 800px) {
+  .half-width {
+    flex: 1 1 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+}
+
 img {
   width: 100%;
   height: auto;
@@ -145,7 +149,7 @@ video {
 }
 
 .communication-section {
-  background-color: purple;
+  background-color: white;
   color: white;
   border-radius: 5px;
   padding: 20px;
@@ -191,11 +195,11 @@ textarea {
 }
 
 form {
-  background-color: white;
-  color: black;
+  background-color: 1e272e;
+  color: white;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px #1e272e;
             
 }
 
@@ -230,7 +234,7 @@ input[type="text"] {
 
         h1 {
             font-size: 24px;
-            color: purple;
+            color: rgb(37, 172, 39);
         }
 
         h2, h3 {
@@ -268,8 +272,8 @@ input[type="text"] {
       <h2>Düşün Hikaye Nedir?</h2>
       <p>Düşün Kitabın bir alt grubu olan Düşün Hikaye, yaratıcılığınızı ve yazma yeteneklerinizi keşfetmeniz için özel bir platform sunar.</p><br>
       <p>Bu platform içinde yazmakta zorlanan ve destek almak isteyen ve kitabını daha hızlı yayınlatmak isteyen yazar adaylarına özel imkanlar sunar.</p><br>
-      <p>Aşağıda bulunan iletişim formu sayesinde yazarlarla iletişime geçebilir veyardım isteyebilirsiniz. Yan tarafta bulunan Noktalama işaretlerini gerekli yerlerde kullanarak daha anlaşılır cümleler kurabilirsiniz.</p><br>
-      <p>Sorularınız için Düşün Kitabın instagram sayfasına da gidebilir veya yazarlar bölümünde belirtilen mail adreslerinden de sorularınızı iletebilirsiniz.</p>
+      <p>Aşağıda bulunan iletişim formu sayesinde yazarlarla iletişime geçebilir ve yardım isteyebilirsiniz. Yan tarafta bulunan Noktalama işaretlerini gerekli yerlerde kullanarak daha anlaşılır cümleler kurabilirsiniz.</p><br>
+      <p>Sorularınız için Düşün Kitap instagram sayfasına da gidebilir veya yazarlar bölümünde belirtilen mail adreslerinden de sorularınızı iletebilirsiniz.</p>
     </div>
   </div>
   <div class="half-width">
@@ -297,7 +301,7 @@ input[type="text"] {
 
   <div class="full-width">
     <form action="https://formspree.io/f/xqkrolbd" method="post">
-        <h1>Düşün|Hikaye İletişim Formu</h1>
+        <h1 id = "contact">Düşün|Hikaye İletişim Formu</h1>
         <label for="name">Lütfen isminizi ve soyadınızı yazınız</label>
         <input type="text" id="name" name="name" required>
         <label for="name">Lütfen mail adresinizi yazınız</label>
