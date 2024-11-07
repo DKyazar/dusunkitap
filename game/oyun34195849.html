@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Librob'un Sayfaları</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            overflow: hidden;
+            background-color: #87CEEB;
+        }
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background-color: #87CEFA;
+            border: 2px solid #333;
+        }
+        #score {
+            text-align: center;
+            font-size: 24px;
+            margin: 20px;
+        }
+        .speech-bubble {
+            position: absolute;
+            background: white;
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 10px;
+            max-width: 300px; 
+            font-size: 14px; 
+            display: none;
+            z-index: 10;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+            white-space: normal; 
+        }
+        .speech-bubble::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-left-color: white;
+            border-right: 0;
+            border-top: 0;
+            top: 50%;
+            left: 100%;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div id="score">Toplam Skor: 0</div>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <div id="speechBubble" class="speech-bubble"></div>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const pages = [];
+        const pageSize = { width: 100, height: 50 };
+        let score = 0;
+        let gameInterval;
+        let gameEnded = false;
+        let pageCreationInterval = 20;
+        const speechBubble = document.getElementById('speechBubble');
+
+        const messages = [
+            "Ah! Bu kitap çok kalın! Okunmaz",
+            "Kitap okumak çok sıkıcı",
+            "Kitap demek kesilen ağaç demek",
+            "Bu kitaplar gereksiz",
+            "Parçalamaya devam edeceğim",
+            "Atıyorum, yakala!",
+            "Kitapların sayfaları uçuyor!",
+            "Elbet evdeki bütün kitapları yırtacağım.",
+            "Sayfaları aşağıya atmak daha eğlenceli.",
+            "Kitap Yok Oley"
+        ];
+
+        function startGame() {
+            document.getElementById('score').textContent = `Toplam Skor: ${score}`;
+            gameInterval = setInterval(updateGame, 20);
+            canvas.addEventListener('click', handleCanvasClick);
+            createPage();
+            setRandomMessage();
+        }
+
+        function drawBalkon() {
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(0, 0, canvas.width, 20);
+            ctx.strokeStyle = '#A0522D';
+            ctx.lineWidth = 5;
+            ctx.beginPath();
+            ctx.moveTo(0, 20);
+            ctx.lineTo(0, 40);
+            ctx.moveTo(canvas.width, 20);
+            ctx.lineTo(canvas.width, 40);
+            ctx.stroke();
+
+            ctx.fillStyle = '#FFD700';
+            ctx.beginPath();
+            ctx.arc(canvas.width / 2, 30, 30, 0, 2 * Math.PI);
+            ctx.fill();
+
+            ctx.fillStyle = '#000';
+            ctx.beginPath();
+            ctx.arc(canvas.width / 2 - 10, 25, 5, 0, 2 * Math.PI);
+            ctx.arc(canvas.width / 2 + 10, 25, 5, 0, 2 * Math.PI);
+            ctx.fill();
+
+            ctx.strokeStyle = '#000';
+            ctx.beginPath();
+            ctx.arc(canvas.width / 2, 35, 10, 0, Math.PI);
+            ctx.stroke();
+
+            ctx.fillStyle = '#A0522D';
+            ctx.fillRect(canvas.width / 2 - 20, 60, 40, 80);
+            ctx.fillStyle = '#FFD700';
+            ctx.fillRect(canvas.width / 2 - 40, 60, 20, 60);
+            ctx.fillRect(canvas.width / 2 + 20, 60, 20, 60);
+            ctx.fillStyle = '#A0522D';
+            ctx.fillRect(canvas.width / 2 - 20, 140, 15, 40);
+            ctx.fillRect(canvas.width / 2 + 5, 140, 15, 40);
+        }
+
+        function drawGrass() {
+            ctx.fillStyle = '#228B22';
+            ctx.fillRect(0, canvas.height - 50, canvas.width, 50);
+        }
+
+        function drawTrees() {
+            const treePositions = [
+                { x: 150, y: canvas.height - 50 },
+                { x: 600, y: canvas.height - 50 },
+                { x: 1000, y: canvas.height - 50 }
+            ];
+            treePositions.forEach(pos => {
+                ctx.fillStyle = '#8B4513';
+                ctx.fillRect(pos.x, pos.y - 50, 20, 50);
+                ctx.fillStyle = '#228B22';
+                ctx.beginPath();
+                ctx.arc(pos.x + 10, pos.y - 80, 40, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        }
+
+        function createPage() {
+            const x = Math.random() * (canvas.width - pageSize.width);
+            const page = {
+                x,
+                y: 0,
+                width: pageSize.width,
+                height: pageSize.height,
+                name: 'Sayfa',
+                fallSpeed: 1 + Math.random() * 1.5
+            };
+            pages.push(page);
+        }
+
+        function updateGame() {
+            if (gameEnded) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawBalkon();
+            drawGrass();
+            drawTrees();
+            drawPages();
+            movePages();
+            if (Math.random() < 1 / pageCreationInterval) createPage();
+            checkGameOver();
+            if (score >= 150 && !gameEnded) {
+                endGame("Harikasınız! Tüm sayfaları kurtardınız!");
+            }
+        }
+
+        function drawPages() {
+            pages.forEach(page => {
+                ctx.fillStyle = '#f0f0f0';
+                ctx.fillRect(page.x, page.y, page.width, page.height);
+                ctx.strokeRect(page.x, page.y, page.width, page.height);
+                ctx.fillStyle = '#333';
+                ctx.fillText(page.name, page.x + 10, page.y + page.height / 2 + 5);
+            });
+        }
+
+        function movePages() {
+            pages.forEach(page => {
+                page.y += page.fallSpeed;
+            });
+        }
+
+        function handleCanvasClick(event) {
+            if (gameEnded) return;
+            const rect = canvas.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            pages.forEach((page, index) => {
+                if (x > page.x && x < page.x + page.width &&
+                    y > page.y && y < page.y + page.height) {
+                    pages.splice(index, 1);
+                    score++;
+                    document.getElementById('score').textContent = `Toplam Skor: ${score}`;
+                    setRandomMessage();
+                }
+            });
+        }
+
+        function checkGameOver() {
+            pages.forEach((page, index) => {
+                if (page.y + page.height > canvas.height - 50) {
+                    endGame("Oyun Bitti!");
+                }
+            });
+        }
+
+        function endGame(message) {
+            clearInterval(gameInterval);
+            ctx.fillStyle = 'red';
+            ctx.font = '36px Arial';
+            ctx.fillText(message, canvas.width / 2 - 200, canvas.height / 2);
+            gameEnded = true;
+        }
+
+        function setRandomMessage() {
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            speechBubble.textContent = messages[randomIndex];
+            const librobX = canvas.width / 1.15 - 30; 
+            const librobY = 60;
+            speechBubble.style.left = `${librobX - 210}px`;
+            speechBubble.style.top = `${librobY}px`;
+            speechBubble.style.display = 'block';
+
+            setTimeout(() => {
+                speechBubble.style.display = 'none';
+            }, 3000);
+        }
+
+        startGame();
+    </script>
+</body>
+</html>
