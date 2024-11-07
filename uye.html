@@ -113,6 +113,26 @@
         button:hover {
             background-color: #171c52;
         }
+
+        @media only screen and (min-width: 100px) and (max-width: 800px) {
+            .card-front, .card-back {
+            top: 20px;           
+            width: 450px;
+            height: 600px;           
+            box-shadow: 0 3px 5px rgb(216, 204, 204);   
+            margin-left: 175px;         
+      } 
+
+      .card-front {
+            background: url('https://source.unsplash.com/random/800x500') center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            font-size: 25px; 
+            font-weight: bold;
+      }
+    }
     </style>
 </head>
 <body>
