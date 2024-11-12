@@ -19,8 +19,8 @@
         }
         #score {
             text-align: center;
-            font-size: 2vh;
-            margin: 10px;
+            font-size: 24px;
+            margin: 20px;
         }
         .speech-bubble {
             position: absolute;
@@ -28,8 +28,8 @@
             border: 1px solid black;
             border-radius: 5px;
             padding: 10px;
-            max-width: 250px;
-            font-size: 1.5vh;
+            max-width: 300px;
+            font-size: 14px;
             display: none;
             z-index: 10;
             box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
@@ -52,26 +52,18 @@
 </head>
 <body>
     <div id="score">Toplam Skor: 0</div>
-    <canvas id="gameCanvas"></canvas>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
     <div id="speechBubble" class="speech-bubble"></div>
     <script>
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
         const pages = [];
-        const pageSize = { width: 80, height: 40 };
+        const pageSize = { width: 100, height: 50 };
         let score = 0;
         let gameInterval;
         let gameEnded = false;
         let pageCreationInterval = 20;
         const speechBubble = document.getElementById('speechBubble');
-
-        // Ekran boyutuna göre canvas boyutunu ayarla
-        function resizeCanvas() {
-            canvas.width = window.innerWidth > 800 ? 800 : window.innerWidth;
-            canvas.height = window.innerHeight > 600 ? 600 : window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
 
         const messages = [
             "Ah! Bu kitap çok kalın! Okunmaz",
@@ -85,6 +77,19 @@
             "Sayfaları aşağıya atmak daha eğlenceli.",
             "Kitap Yok Oley"
         ];
+
+        function adjustCanvasSize() {
+            if (window.innerWidth <= 800) {
+                canvas.width = 600;
+                canvas.height = 450;
+            } else {
+                canvas.width = 800;
+                canvas.height = 600;
+            }
+        }
+
+        window.addEventListener('resize', adjustCanvasSize);
+        adjustCanvasSize();
 
         function startGame() {
             document.getElementById('score').textContent = `Toplam Skor: ${score}`;
@@ -215,7 +220,7 @@
         }
 
         function checkGameOver() {
-            pages.forEach((page, index) => {
+            pages.forEach((page) => {
                 if (page.y + page.height > canvas.height - 50) {
                     endGame("Oyun Bitti!");
                 }
@@ -235,7 +240,7 @@
             speechBubble.textContent = messages[randomIndex];
             const librobX = canvas.width / 1.15 - 30;
             const librobY = 60;
-            speechBubble.style.left = `${librobX - 200}px`;
+            speechBubble.style.left = `${librobX - 210}px`;
             speechBubble.style.top = `${librobY}px`;
             speechBubble.style.display = 'block';
 
