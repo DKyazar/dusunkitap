@@ -1,143 +1,184 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html>
 <head>
-<title>Yazarlarımız</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel = "icon" href="icon/Yazar.jpg">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<title>Yazarlar</title>
 <style>
-* {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0;
-  background-color: #1e272e;
-  color: #ecf0f1;
+    background-color: #1e272e;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    color: white;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 0;
 }
 
 nav {
-            width: 100%;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #2f3640;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-            margin-bottom: 20px;
-        }
-
-        nav .nav-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            position: relative;
-        }
-
-        nav .logo {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #ffffff;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-        nav a {
-            font-size: 1em;
-            font-weight: bold;
-            color: #ffffff;
-            text-decoration: none;
-            margin: 0 20px;
-        }
-
-        nav a.active {
-            background-color: #00a8ff;
-            padding: 10px;
-            border-radius: 20px;
-        }
-
-nav span{
-  position:absolute;
-  top: 0;
-  left: 0;
-  width: 95px;
-  height: 100%;
-  background: linear-gradient(45deg, #be7171);
-  border-radius: 8px;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2f3640;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
 }
 
-nav a:nth-child(1):hover~span{
-  left: 0;
-}
-
-nav a:nth-child(2):hover~span{
-  left:95px;
-} 
-
-@media only screen and (min-width: 100px) and (max-width: 800px) {
-  nav {
-    height: auto;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-  nav .nav-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  nav .logo {
+nav .nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     position: relative;
-    left: 0;
-    margin-bottom: 10px;
-  }
-  nav a {
-    padding: 10px;
+}
+
+nav .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffffff;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+nav a {
     font-size: 1em;
-    text-align: left;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+nav a.active {
+    background-color: #00a8ff;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+nav span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 95px;
+    height: 100%;
+    background: linear-gradient(45deg, #be7171);
+    border-radius: 8px;
+}
+
+nav a:nth-child(2):hover ~ span {
+    left: 95px;
+}
+
+nav a:nth-child(3):hover ~ span {
+    left: 190px;
+}
+
+.image-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.image-column img {
+    max-width: 200px;
+    border-radius: 50%;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.image-column img:nth-child(2) {
+    margin-top: 170px;
+}
+
+.card-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+}
+
+.card, .card1 {
     width: 100%;
-    display: block;
-    box-sizing: border-box;
-  }
+    padding: 20px;
+    background: rgba(198, 198, 198, 0.34);
+    border-radius: 8px;
+    backdrop-filter: blur(8px);
+    border-bottom: 3px solid rgba(255, 255, 255, 0.440);
+    box-shadow: -10px 15px 30px rgba(0, 0, 0, 0.280);
+    transform: skewX(10deg);
+    transition: 0.4s;
+    overflow: hidden;
+    color: white;
 }
 
-.column {
-  float: left;
-  width: 50%;
-  padding: 35px;
-  
+.card:hover, .card1:hover {
+    transform: skewX(0deg);
+    background: rgba(255, 255, 255, 0.1);
 }
 
-.columnA {
-  float: left;
-  width: 50%;
-  padding: 35px;
+.card h1, .card1 h1 {
+    margin: 1.3rem;
+    color: rgb(218, 244, 237);
+    text-shadow: -2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.row::after {
-  content: "";
-  display: table;
-  clear: both;
+.card1 {
+    backdrop-filter: blur(5px);
+    border-right: 2px rgba(255, 255, 255, 0.545) outset;
+    box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.280);
 }
 
-h1{
-	color:white;
+.card img, .card1 img {
+    margin: 10px;
+    border-radius: 8px;
 }
 
-@media only screen and (min-width: 150px) and (max-width: 600px){
-  img{
-    width: 100%;
-  }
+@media only screen and (max-width: 800px) {
+    body {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-column {
+        width: 100%;
+    }
+
+    nav {
+        height: auto;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    nav .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav .logo {
+        position: relative;
+        left: 0;
+        margin-bottom: 10px;
+    }
+
+    nav a {
+        padding: 10px;
+        font-size: 1em;
+        text-align: left;
+        width: 95%;
+        display: block;
+        box-sizing: border-box;
+    }
+
+    .image-column img {
+        display: none; /* Mobil cihazlarda resimler gizleniyor */
+    }
 }
-
-
-
 </style>
 </head>
 <body>
-
-  <nav>
+<nav>
     <div class="nav-container">
-        <div class="logo">DÜŞÜN|KİTAP</div> 
+        <div class="logo">DÜŞÜN|KİTAP</div>
         <a href="index.html">Anasayfa</a>
         <a href="Kitaplarimiz.html">Kitaplarımız</a>
         <a href="#" class="active">Yazarlarımız</a>
@@ -147,41 +188,32 @@ h1{
     </div>
 </nav>
 
+<div class="image-column">
+    <img src="img/Berkay.png" alt="Berkay Perktaş">
+    <img src="img/Sinan.png" alt="Sinan Perktaş">
+</div>
 
-<div class="row">
-  <div class="column">
-    <h2 style ="color:white;">Berkay Perktaş</h2>
-    <img src = "img/Berkay.png"> 
-    <p style ="color:white;">2002 yılında Elazığda doğdu. <br> İlköğretim'i Manisada, Ortaöğretim'i İzmirde tamamladı.<br>
-    Daha sonra 2024 yılında Ostim Teknik Üniversitesini bitirdi. Bekar ve Ankara'da ikametgah etmektedir. </p>
-    <p style = "color:white;">Mail adresi: berkay.dusunkitap@gmail.com </p>
-  </div>
-  
-  <div class="column">
-    <h2 style ="color:white;">M.Sinan Perktaş</h2>
-    <img src = "img/Sinan.png" width="250px" height="300px">
-    <p style ="color:white;">1968 yılında, Hatay ili Kırıkhan ilçesinde doğdu.<br> İlköğretim ve Ortaöğretim'i yine aynı ilçede tamamladıktan sonra 1991 yılında Kara Harp Okulunu bitirdi.<br>
-    Daha sonra Gazi Üniversitesi Fen bilimleri Enstitüsünde iki alanda yüksek lisans eğitimini tamamladı. Evli ve iki çocuk babasıdır. Şubat 2023 de yaşanan depremden beri Diyarbakırda ikamet ediyor.  </p>
-    <p style = "color:white;">Mail adresi: sinan.dusunkitap@gmail.com </p>
-  </div>
-  
-  <div class="columnA">
-  	 <h3 style = "color:white;">Kitapları</h3>
- 	    <img src = "img/İftira.jpg" width="200px">
-       <img src = "img/CBİG.jpg" width="200px">
-      
-  </div>
-  
-  <div class="columnA">
-  	 <h3 style = "color:white;">Kitapları</h3>
- 	    <img src = "img/Masum.jpg" width="200px">
-     <img src = "img/Zincirlenmis.jpg" width="200px">
-     <img src = "img/Karanlik.jpg"width="200px">
-     
-  </div>
-  
+<div class="card-column">
+    <div class="card">
+        <h1>BERKAY PERKTAŞ</h1>
+        <p>
+            2002 yılında Elazığda doğdu. İlköğretim'i Manisa'da, Ortaöğretim'i İzmir'de tamamladı.
+            Daha sonra 2024 yılında Ostim Teknik Üniversitesini bitirdi. Bekar ve Ankara'da ikamet etmektedir.
+        </p>
+        <p>Mail adresi: berkay.dusunkitap@gmail.com</p>
+        <img src="img/İftira.jpg" width="125px">
+        <img src="img/CBİG.jpg" width="125px">
+    </div>
 
+    <div class="card1">
+        <h1>SİNAN PERKTAŞ</h1>
+        <p>1968 yılında, Hatay ili Kırıkhan ilçesinde doğdu.
+            İlköğretim ve Ortaöğretim'i yine aynı ilçede tamamladıktan sonra 1991 yılında Kara Harp Okulunu bitirdi.
+            Daha sonra Gazi Üniversitesi Fen bilimleri Enstitüsünde iki alanda yüksek lisans eğitimini tamamladı. Evli ve iki çocuk babasıdır. Şubat 2023 de yaşanan depremden beri Diyarbakırda ikamet ediyor.</p>
+        <img src="img/Masum.jpg" width="125px">
+        <img src="img/Zincirlenmis.jpg" width="125px">
+        <img src="img/Karanlik.jpg" width="125px">
+    </div>
+</div>
 </body>
 </html>
-
-

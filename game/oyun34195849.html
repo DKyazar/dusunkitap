@@ -48,15 +48,35 @@
             left: 100%;
             transform: translateY(-50%);
         }
+        #restartButton {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        #restartButton:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
     <div id="score">Toplam Skor: 0</div>
     <canvas id="gameCanvas" width="800" height="600"></canvas>
     <div id="speechBubble" class="speech-bubble"></div>
+    <button id="restartButton" onclick="restartGame()">Yeniden Oyna</button>
     <script>
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
+        const restartButton = document.getElementById('restartButton');
         const pages = [];
         const pageSize = { width: 100, height: 50 };
         let score = 0;
@@ -93,6 +113,10 @@
 
         function startGame() {
             document.getElementById('score').textContent = `Toplam Skor: ${score}`;
+            restartButton.style.display = 'none';
+            gameEnded = false;
+            pages.length = 0;
+            score = 0;
             gameInterval = setInterval(updateGame, 20);
             canvas.addEventListener('click', handleCanvasClick);
             createPage();
@@ -142,22 +166,6 @@
             ctx.fillRect(0, canvas.height - 50, canvas.width, 50);
         }
 
-        function drawTrees() {
-            const treePositions = [
-                { x: 150, y: canvas.height - 50 },
-                { x: 600, y: canvas.height - 50 },
-                { x: 1000, y: canvas.height - 50 }
-            ];
-            treePositions.forEach(pos => {
-                ctx.fillStyle = '#8B4513';
-                ctx.fillRect(pos.x, pos.y - 50, 20, 50);
-                ctx.fillStyle = '#228B22';
-                ctx.beginPath();
-                ctx.arc(pos.x + 10, pos.y - 80, 40, 0, Math.PI * 2);
-                ctx.fill();
-            });
-        }
-
         function createPage() {
             const x = Math.random() * (canvas.width - pageSize.width);
             const page = {
@@ -176,12 +184,11 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             drawBalkon();
             drawGrass();
-            drawTrees();
             drawPages();
             movePages();
             if (Math.random() < 1 / pageCreationInterval) createPage();
             checkGameOver();
-            if (score >= 150 && !gameEnded) {
+            if (score >= 500 && !gameEnded) {
                 endGame("Harikasınız! Tüm sayfaları kurtardınız!");
             }
         }
@@ -233,6 +240,7 @@
             ctx.font = '36px Arial';
             ctx.fillText(message, canvas.width / 2 - 200, canvas.height / 2);
             gameEnded = true;
+            restartButton.style.display = 'block';
         }
 
         function setRandomMessage() {
@@ -247,6 +255,15 @@
             setTimeout(() => {
                 speechBubble.style.display = 'none';
             }, 3000);
+        }
+
+        function restartGame() {
+            score = 0;
+            gameEnded = false;
+            pages.length = 0;
+            document.getElementById('score').textContent = `Toplam Skor: ${score}`;
+            restartButton.style.display = 'none';
+            startGame();
         }
 
         startGame();
